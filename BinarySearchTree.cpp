@@ -1,12 +1,19 @@
 #include "BinarySearchTree.h"
+#include "BinaryTree.h"
+#include "TreeNode.h"
 
 
-template<typename T>
+template <typename T>
+BinarySearchTree<T>::BinarySearchTree() : BinaryTree<T>()
+{
 
-inline TreeNode<T>* BinarySearchTree<T>::InsertNodePrivate(TreeNode<T>* node, T value)
+}
+
+template <typename T>
+TreeNode<T>* BinarySearchTree<T>::InsertNodePrivate(TreeNode<T>* node, T value)
 {
     if (node == nullptr) {
-        return new TreeNode(value);
+        return new TreeNode<T>(value); // Specify the template parameter <T>
     }
 
     if (value < node->data) {
@@ -19,13 +26,11 @@ inline TreeNode<T>* BinarySearchTree<T>::InsertNodePrivate(TreeNode<T>* node, T 
     return node;
 }
 
-template<typename T>
+template <typename T>
 void BinarySearchTree<T>::InsertNode(T value)
 {
     root = InsertNodePrivate(root, value);
-        
 }
-
 
 
 
